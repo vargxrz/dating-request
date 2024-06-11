@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namora comigo?</title>
+</head>
+
+<body>
+    <div id="conteudo">
+        <h2>Veyda, aceita namorar comigo?</h2>
+        <div class="button-container">
+            <button class="btn yes-btn" onclick="sim()">sim</button>
+            <button class="btn no-btn" onclick="desvia(this)" onmouseover="desvia(this)">não</button>
+        </div>
+    </div>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        font-family: Montserrat;
+    }
+
+    body {
+        background-color: #fb6f92;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    #conteudo {
+        background: #ff8fab;
+        padding: 200px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 36px;
+        font-family: sans-serif;
+    }
+
+    h2 {
+        color: #ffe5ec;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .btn {
+        background: #ffc2d1;
+        color: #fb6f92;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 5px;
+        font-size: 34px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-5px);
+    }
+</style>
+
+<script>
+    function sim() {
+        alert("Agora a gente namora, irritadinha!");
+        location.href = "https://www.youtube.com/watch?v=tbo0vUuUpWk&pp=ygUTbHV6IHF1ZSBtZSB0cmF6IHBheg%3D%3D";
+    }
+
+    function desvia(btn) {
+        btn.style.position = 'absolute';
+        btn.style.top = geraPosicao(20, 80);
+        btn.style.left = geraPosicao(20, 80);
+    }
+
+    function geraPosicao(min, max) {
+        return (Math.random() * (max - min) + min) + "%";
+    }
+</script>
+
+</html>
