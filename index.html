@@ -9,42 +9,120 @@
 </head>
 
 <body>
+    <div class="hearts-background"></div>
     <div id="conteudo">
-        <h2>Maria você aceita namorar comigo?</h2>
-        <p style="color: #ffe5ec; font-size: 35px">Ass: vargas</p>
+        <h2>ana julia oneda você aceita namorar comigo?</h2>
+        <p style="color: #f0d9ff; font-size: 35px">assinado: joao gabriel reinert vargas</p>
         <div class="button-container">
             <button class="btn yes-btn" onclick="sim()">sim</button>
             <button class="btn no-btn" onclick="desvia(this)" onmouseover="desvia(this)">não</button>
         </div>
     </div>
+
+    <div id="resultado" style="display: none;">
+        <div class="celebration">
+            <p class="main-message top-message">
+                A vida às vezes é meio injusta: a gente tem tanto amor pra dar, mas nem sempre ele encontra espaço pra acontecer.
+            </p>
+
+            <img src="d1a5a6ee-76cd-4741-8719-bb5cf24ef97a.jpeg" alt="Casal feliz" class="couple-image">
+
+            <div class="bottom-messages">
+                <p class="main-message">
+                    Ana Júlia Oneda, eu gosto muito de você — de um jeito platônico, silencioso, bonito e sem cobranças.
+                    Mas, acima de tudo, eu gosto ainda mais da sua amizade, da nossa conexão leve, sincera e rara.
+                </p>
+                <p class="main-message closing-message">
+                    Obrigado por ser abrigo e riso. O coração pode até sonhar além, mas é a sua amizade que deixa tudo mais certo.
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-    
+
     * {
         font-family: Montserrat;
     }
 
     body {
-        background-color: #fb6f92;
+        background: linear-gradient(135deg, #7b2cbf 0%, #5a189a 100%);
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .hearts-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh) scale(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) scale(1);
+            opacity: 0;
+        }
+    }
+
+    .hearts-background::before,
+    .hearts-background::after {
+        content: "💜";
+        position: absolute;
+        font-size: 30px;
+        animation: float 8s infinite ease-in;
+    }
+
+    .hearts-background::before {
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .hearts-background::after {
+        left: 80%;
+        animation-delay: 4s;
     }
 
     #conteudo {
-        background: #ff8fab;
-        padding: 150px;
-        border-radius: 100px;
+        background: rgba(199, 125, 255, 0.3);
+        backdrop-filter: blur(10px);
+        padding: 80px 100px;
+        border-radius: 50px;
         text-align: center;
         font-size: 36px;
         font-family: sans-serif;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3),
+                    0 0 30px rgba(199, 125, 255, 0.4),
+                    inset 0 0 50px rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(199, 125, 255, 0.5);
+        position: relative;
+        z-index: 1;
     }
 
     h2 {
-        color: #ffe5ec;
+        color: #f0d9ff;
+        text-shadow: 2px 2px 10px rgba(123, 44, 191, 0.5);
+        margin-bottom: 20px;
     }
 
     .button-container {
@@ -55,25 +133,219 @@
     }
 
     .btn {
-        background: #ffc2d1;
-        color: #fb6f92;
+        background: linear-gradient(135deg, #c77dff 0%, #e0aaff 100%);
+        color: #7b2cbf;
         border: none;
         padding: 15px 40px;
-        border-radius: 18px;
+        border-radius: 25px;
         font-size: 34px;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(199, 125, 255, 0.4);
     }
 
     .btn:hover {
-        transform: translateY(-5px);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 30px rgba(199, 125, 255, 0.6);
+    }
+
+    .yes-btn {
+        background: linear-gradient(135deg, #c77dff 0%, #e0aaff 100%);
+    }
+
+    .no-btn {
+        background: linear-gradient(135deg, #e0aaff 0%, #c77dff 100%);
+    }
+
+    #resultado {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .celebration {
+        text-align: center;
+        animation: fadeIn 1.5s ease-in;
+        max-width: 90vw;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+    }
+
+    .main-message {
+        color: #ffffff;
+        font-size: 24px;
+        line-height: 1.8;
+        margin: 0;
+        text-align: center;
+        text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.8),
+                    0 0 30px rgba(199, 125, 255, 0.6);
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        max-width: 900px;
+        padding: 0 20px;
+    }
+
+    .top-message {
+        font-style: italic;
+        font-weight: 400;
+        font-size: 26px;
+        animation: fadeInDown 1.5s ease-out;
+    }
+
+    .bottom-messages {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 900px;
+        animation: fadeInUp 1.5s ease-out;
+    }
+
+    .closing-message {
+        font-weight: 500;
+        color: #f0d9ff;
+        font-size: 25px;
+        text-shadow: 3px 3px 25px rgba(123, 44, 191, 0.9),
+                    0 0 40px rgba(199, 125, 255, 0.8);
+    }
+
+    .couple-image {
+        max-width: 700px;
+        max-height: 500px;
+        width: 100%;
+        border-radius: 40px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7),
+                    0 0 80px rgba(199, 125, 255, 0.6),
+                    0 0 120px rgba(199, 125, 255, 0.3);
+        border: 6px solid rgba(240, 217, 255, 0.7);
+        animation: scaleIn 1.8s ease-out;
+        object-fit: cover;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-message {
+            font-size: 18px;
+            padding: 0 10px;
+        }
+
+        .top-message {
+            font-size: 20px;
+        }
+
+        .closing-message {
+            font-size: 19px;
+        }
+
+        .couple-image {
+            max-width: 95vw;
+            border-radius: 25px;
+            border: 4px solid rgba(240, 217, 255, 0.7);
+        }
+
+        .celebration {
+            gap: 25px;
+            padding: 15px 10px;
+        }
+
+        .bottom-messages {
+            gap: 20px;
+        }
     }
 </style>
 
 <script>
-    function sim() {
-        location.href = "https://youtu.be/1YUBbF24H44?list=RD1YUBbF24H44";
+    // Create animated hearts
+    function createHeart() {
+        const heartsContainer = document.querySelector('.hearts-background');
+        const heart = document.createElement('div');
+        heart.innerHTML = '💜';
+        heart.style.position = 'absolute';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        heart.style.animation = `float ${Math.random() * 5 + 6}s ease-in infinite`;
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heart.style.opacity = '0';
+        heartsContainer.appendChild(heart);
     }
+
+    // Create multiple hearts
+    for (let i = 0; i < 15; i++) {
+        createHeart();
+    }
+
+    function sim() {
+        // Esconde o conteúdo inicial
+        document.getElementById('conteudo').style.display = 'none';
+
+        // Mostra a página de resultado
+        document.getElementById('resultado').style.display = 'flex';
+
+        // Adiciona mais corações para celebrar
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+    }
+
 
     function desvia(btn) {
         btn.style.position = 'absolute';
